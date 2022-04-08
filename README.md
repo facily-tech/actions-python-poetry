@@ -24,3 +24,11 @@ jobs:
       - name: Install dependencies
         run: poetry run pytest --cov=src --color=yes tests/
 ```
+
+To setup nexus in your repostiory use
+
+```toml
+[[tool.poetry.source]]
+name = "facily"
+url = "https://nexus.faci.ly/repository/facily-pypi-group/simple/"
+```

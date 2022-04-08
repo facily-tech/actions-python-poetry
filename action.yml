@@ -46,7 +46,7 @@ runs:
         shell: bash
         run: poetry env use ${{ inputs.python-version }}
 
-      - name: Set corret python version
+      - name: Setup Nexus repository
         if: inputs.nexus-user != ''
         shell: bash
         run: poetry config http-basic.facily ${{ inputs.nexus-user }} ${{ inputs.nexus-password }}
