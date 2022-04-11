@@ -26,12 +26,12 @@ runs:
         uses: actions/cache@v3
         with:
           path: ~/poetry
-          key: poetry-${{ inputs.POETRY_VERSION }}
+          key: poetry-${{ inputs.poetry-version }}
 
       - name: Install poetry
         if: steps.cache-poetry.outputs.cache-hit != 'true'
         shell: bash
-        run: curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/poetry python3 -
+        run: curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/poetry POETRY_VERSION=${{ inputs.poetry-version }} python3 -
 
       - name: Setup poetry
         shell: bash
