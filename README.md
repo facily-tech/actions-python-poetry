@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install python and poetry
-        uses: facily-tech/actions-python-poetry@v0.1.0
+        uses: facily-tech/actions-python-poetry@v0.1.1
         with:
           python-version: '3.9'
           nexus-user: ${{ secrets.NEXUS_USER }}  # optional
