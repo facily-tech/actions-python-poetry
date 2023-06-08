@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/facily-tech/actions-python-poetry/compare/v0.1.1...v0.2.0) (2023-06-08)
+
+
+### Features
+
+* **entire-action:** upgraded version of python and poetry for more updated projects ([bd930f1](https://github.com/facily-tech/actions-python-poetry/commit/bd930f1783742f46e8347046ed347efe0b52b1b0))
+
 ### [0.1.1](https://github.com/facily-tech/actions-python-poetry/compare/v0.1.0...v0.1.1) (2022-04-11)
 
 
