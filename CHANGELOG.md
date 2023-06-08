@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.1](https://github.com/facily-tech/actions-python-poetry/compare/v0.2.0...v0.2.1) (2023-06-08)
+
+
+### Bug Fixes
+
+* typo when setting the poetry version, now using the correct latest 1.5.1 ([9604e0e](https://github.com/facily-tech/actions-python-poetry/commit/9604e0e31a30e75163695eaa9c28dc48c5b4460d))
+
 ## [0.2.0](https://github.com/facily-tech/actions-python-poetry/compare/v0.1.1...v0.2.0) (2023-06-08)
 
 
