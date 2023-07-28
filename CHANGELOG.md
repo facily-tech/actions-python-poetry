@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/facily-tech/actions-python-poetry/compare/v0.2.1...v0.3.0) (2023-07-28)
+
+
+### Features
+
+* allow new version of mysqlclient to be used ([4f15755](https://github.com/facily-tech/actions-python-poetry/commit/4f15755fc5476f7dae79c603eea0758358fabff2))
+
 ### [0.2.1](https://github.com/facily-tech/actions-python-poetry/compare/v0.2.0...v0.2.1) (2023-06-08)
 
 
