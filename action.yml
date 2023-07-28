@@ -2,51 +2,55 @@ name: Setup Python and Poetry
 description: Installs python with poetry and setups cache
 inputs:
   python-version:
-    description: 'Python Version'
-    default: '3.11'
+    description: "Python Version"
+    default: "3.11"
     required: true
   poetry-version:
-    description: 'Poetry Version'
-    default: '1.5.1'
+    description: "Poetry Version"
+    default: "1.5.1"
     required: false
   nexus-user:
-    description: 'User for Private Repository (Nexus)'
-    default: ''
+    description: "User for Private Repository (Nexus)"
+    default: ""
     required: false
   nexus-password:
-    description: 'Password for Private Repository (Nexus)'
-    default: ''
+    description: "Password for Private Repository (Nexus)"
+    default: ""
     required: false
 
 runs:
   using: "composite"
   steps:
-      - name: Cache Poetry Installation
-        id: cache-poetry
-        uses: actions/cache@v3
-        with:
-          path: ~/poetry
-          key: poetry-${{ inputs.poetry-version }}
+    - name: Cache Poetry Installation
+      id: cache-poetry
+      uses: actions/cache@v3
+      with:
+        path: ~/poetry
+        key: poetry-${{ inputs.poetry-version }}
 
-      - name: Install poetry
-        if: steps.cache-poetry.outputs.cache-hit != 'true'
-        shell: bash
-        run: curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/poetry POETRY_VERSION=${{ inputs.poetry-version }} python3 -
+    - name: Install poetry
+      if: steps.cache-poetry.outputs.cache-hit != 'true'
+      shell: bash
+      run: curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/poetry POETRY_VERSION=${{ inputs.poetry-version }} python3 -
 
-      - name: Setup poetry
-        shell: bash
-        run: echo "$HOME/poetry/bin" >> $GITHUB_PATH
+    - name: Setup poetry
+      shell: bash
+      run: echo "$HOME/poetry/bin" >> $GITHUB_PATH
 
-      - uses: actions/setup-python@v3
-        with:
-          python-version: ${{ inputs.python-version }}
-          cache: 'poetry'
+    - name: Setup Pkg
+      shell: bash
+      run: apt-get install -y --no-install-recommends pkg-config
 
-      - name: Set corret python version
-        shell: bash
-        run: poetry env use ${{ inputs.python-version }}
+    - uses: actions/setup-python@v3
+      with:
+        python-version: ${{ inputs.python-version }}
+        cache: "poetry"
 
-      - name: Setup Nexus repository
-        if: inputs.nexus-user != ''
-        shell: bash
-        run: poetry config http-basic.facily ${{ inputs.nexus-user }} ${{ inputs.nexus-password }}
+    - name: Set corret python version
+      shell: bash
+      run: poetry env use ${{ inputs.python-version }}
+
+    - name: Setup Nexus repository
+      if: inputs.nexus-user != ''
+      shell: bash
+      run: poetry config http-basic.facily ${{ inputs.nexus-user }} ${{ inputs.nexus-password }}
